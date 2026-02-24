@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Internal Access | Sohan Behera</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter', sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* UTIL */
+.hidden{display:none;}
+.fade{animation:fadeIn 0.6s ease;}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(15px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* LOGIN */
+.login-wrapper{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.login-box{
+width:100%;
+max-width:380px;
+background:#0a0a0a;
+border:1px solid #222;
+padding:40px 30px;
+}
+
+.login-box h2{
+margin-bottom:25px;
+letter-spacing:1px;
+font-weight:600;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-bottom:18px;
+background:#000;
+border:1px solid #333;
+color:#fff;
+font-size:14px;
+}
+
+input:focus{
+outline:none;
+border-color:#fff;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#fff;
+color:#000;
+border:none;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{opacity:0.85;}
+
+.error{
+color:red;
+font-size:13px;
+margin-top:10px;
+}
+
+/* MAIN CONTENT */
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:#000;
+border-bottom:1px solid #222;
+padding:18px 30px;
+display:flex;
+justify-content:space-between;
+z-index:1000;
+}
+
+nav h1{
+font-size:15px;
+letter-spacing:2px;
+}
+
+.section{
+max-width:900px;
+margin:auto;
+padding:100px 20px 80px 20px;
+border-top:1px solid #111;
+}
+
+.section h3{
+margin-bottom:20px;
+font-size:20px;
+}
+
+.section p{
+margin-bottom:15px;
+color:#ddd;
+}
+
+.layers{
+margin-top:20px;
+border-left:2px solid #fff;
+padding-left:20px;
+}
+
+.layers div{margin-bottom:8px;}
+
+.emergency{
+margin-top:40px;
+background:red;
+color:#fff;
+padding:15px;
+border:none;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+.emergency:hover{background:#b30000;}
+
+footer{
+border-top:1px solid #222;
+padding:40px 20px;
+text-align:center;
+font-size:13px;
+color:#aaa;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+nav{padding:15px;}
+.section{padding:90px 15px 60px 15px;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div class="login-wrapper" id="loginPage">
+<div class="login-box fade">
+<h2>AUTHORIZED ACCESS</h2>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">ENTER SYSTEM</button>
+<p class="error" id="error"></p>
+</div>
+</div>
+
+<!-- MAIN SITE -->
+<div id="mainSite" class="hidden">
+
+<nav>
+<h1 id="welcomeText"></h1>
+</nav>
+
+<section class="section fade">
+<h3>About Sohan Behera</h3>
+
+<p>If Sohan is a network security enthusiast, Sohan does not rush — Sohan observes.</p>
+<p>Sohan maps systems first. Every IP address is a puzzle. Every open port is a door waiting to be analyzed.</p>
+<p>Sohan writes his own Python scripts. Automation is his weapon. Precision is his style.</p>
+<p>Sohan works only in controlled and authorized environments. Sohan analyzes traffic scientifically.</p>
+
+<div class="layers">
+<div>Firewall</div>
+<div>IDS</div>
+<div>Encryption</div>
+<div>Authentication</div>
+<div>Human Error</div>
+</div>
+
+<p>Sohan stays calm under pressure. Sohan reads logs. Sohan traces patterns.</p>
+<p>Sohan would rather patch a vulnerability than exploit it.</p>
+
+<button class="emergency" onclick="alert('TM ANO IS INFORMED')">
+INITIATE ALERT
+</button>
+
+</section>
+
+<section class="section fade">
+<h3>About Anonymous</h3>
+
+<p>Anonymous is an international collective organized as a decentralized group of activist and hacktivist individuals.</p>
+<p>The group originated in 2003 on 4chan, representing a digitized collective network.</p>
+<p>Members, known as anons, are sometimes recognized by Guy Fawkes masks inspired by V for Vendetta.</p>
+<p>Public opinion varies widely, with supporters calling them digital activists and critics labeling them cyber vigilantes.</p>
+
+</section>
+
+<footer>
+© 2020 Anonymous group of hacker 
+</footer>
+
+</div>
+
+<script>
+function login(){
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
+
+if(user==="sohanbehera" && pass==="weareano"){
+document.getElementById("loginPage").classList.add("hidden");
+document.getElementById("mainSite").classList.remove("hidden");
+document.getElementById("mainSite").classList.add("fade");
+document.getElementById("welcomeText").innerText="WELCOME "+user;
+}else{
+document.getElementById("error").innerText="ACCESS DENIED";
+}
+}
+</script>
+
+</body>
+</html>
